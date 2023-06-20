@@ -2,6 +2,7 @@
 package com.vilmaweb.backportfolio02.controlador;
 
 import com.vilmaweb.backportfolio02.modelo.Proyecto;
+import com.vilmaweb.backportfolio02.servicio.IntPersonaService;
 import com.vilmaweb.backportfolio02.servicio.IntProyectoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ProyectoController {
     @Autowired
     private IntProyectoService servicioProyecto;
     
+    @Autowired
+    private IntPersonaService servicioPersona;
+    
     @GetMapping("/traertodos")
     public List<Proyecto> traerProyectos() {
         return servicioProyecto.getProyectos();
@@ -35,8 +39,9 @@ public class ProyectoController {
         return servicioProyecto.findProyecto(id);
     }
     
-    @PostMapping("/nuevo/{idpersona}")
-    public void crearProyecto(@RequestBody Proyecto proyectoNuevo, @PathVariable Long idpersona) {
+    @PostMapping("/nuevo/{id_persona}")
+    public void crearProyecto(@PathVariable Long id_persona, @RequestBody Proyecto proyectoNuevo) {
+        servicioPersona.findPersona(id_persona).getListaProyectos().add(proyectoNuevo);
         servicioProyecto.saveProyecto(proyectoNuevo);
     }
     

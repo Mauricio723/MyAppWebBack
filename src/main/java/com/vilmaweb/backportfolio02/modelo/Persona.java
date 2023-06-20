@@ -8,6 +8,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -55,12 +56,16 @@ public class Persona {
     
     @Column(length=100)
     private String ciudad;
-    
-    @OneToMany(mappedBy= "persona", fetch= FetchType.LAZY, cascade= CascadeType.ALL)
+        
+    @OneToMany(fetch= FetchType.EAGER, cascade= CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name= "persona_id")
     private List<Conocimiento> listaConocimientos;
     
-    @OneToMany(mappedBy= "persona", fetch= FetchType.LAZY, cascade= CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name= "persona_id")
     private List<Proyecto> listaProyectos;
+            
+    
     /*
      @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Estudios> estudio;
@@ -72,10 +77,11 @@ public class Persona {
 
     public Persona(){        
     }
-    
+
     public Persona(Long id, String nombre, String apellido, String ocupacion, 
-            String tituloPrincipal, String fechaNacimiento, String email, 
-            String acercaDe, String urlFoto, String urlBanner, String ciudad) {
+                   String tituloPrincipal, String fechaNacimiento, String email, 
+                   String acercaDe, String urlFoto, String urlBanner, String ciudad, 
+                   List<Conocimiento> listaConocimientos, List<Proyecto> listaProyectos) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -87,8 +93,10 @@ public class Persona {
         this.urlFoto = urlFoto;
         this.urlBanner = urlBanner;
         this.ciudad = ciudad;
-    }
-
+        this.listaConocimientos = listaConocimientos;
+        this.listaProyectos = listaProyectos;
+    }          
+   
     public Long getId() {
         return id;
     }
@@ -181,9 +189,16 @@ public class Persona {
         return listaConocimientos;
     }
 
+    public void setListaConocimientos(List<Conocimiento> listaConocimientos) {
+        this.listaConocimientos = listaConocimientos;
+    }
+
     public List<Proyecto> getListaProyectos() {
         return listaProyectos;
     }
-    
-    
+
+    public void setListaProyectos(List<Proyecto> listaProyectos) {
+        this.listaProyectos = listaProyectos;
+    }   
+        
 }

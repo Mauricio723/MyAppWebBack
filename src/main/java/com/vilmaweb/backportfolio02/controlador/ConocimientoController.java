@@ -3,6 +3,7 @@ package com.vilmaweb.backportfolio02.controlador;
 
 import com.vilmaweb.backportfolio02.modelo.Conocimiento;
 import com.vilmaweb.backportfolio02.servicio.IntConocimientoService;
+import com.vilmaweb.backportfolio02.servicio.IntPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,11 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Salvador Mauricio
  */
 @RestController
-@RequestMapping("api72/cooncimientos")
+@RequestMapping("api72/conocimientos")
 public class ConocimientoController {
     
     @Autowired
     private IntConocimientoService servicioConocimiento;
+    
+    @Autowired
+    private IntPersonaService servicioPersona;
+    
     
     @GetMapping("/traertodos")
     public List<Conocimiento> traerConocimientos() {
@@ -35,8 +40,10 @@ public class ConocimientoController {
         return servicioConocimiento.findConocimiento(idconocimiento);
     }
     
-    @PostMapping("/nuevo/{idpersona}")
-    public void crearConocimiento(@RequestBody Conocimiento conocimientoNuevo, @PathVariable Long idpersona) {
+    @PostMapping("/nuevo/{id_persona}")
+    public void crearConocimiento(@PathVariable Long id_persona, @RequestBody Conocimiento conocimientoNuevo) {
+        
+        servicioPersona.findPersona(id_persona).getListaConocimientos().add(conocimientoNuevo);
         servicioConocimiento.saveConocimiento(conocimientoNuevo);
     }
     
