@@ -27,25 +27,18 @@ public class Conocimiento {
     @Column(length=200)
     private String descripcion;
     
-    @Column(length=5)
-    private int nivelAlcanzado;
-   
-    
+    @Column(length=20)
+    private String nivelAlcanzado;
+       
     //@ManyToOne(fetch= FetchType.LAZY)
     //@JoinColumn(name="persona_id")
     //@JsonIgnore
     //private Persona persona;
     
-    /*
-     @ManyToOne()
-    @JoinColumn(name="persona_id")
-    @JsonIgnore
-    private Persona persona;
-    */
     public Conocimiento() {
     }
 
-    public Conocimiento(Long id, String nombre, String descripcion, int nivelAlcanzado) {
+    public Conocimiento(Long id, String nombre, String descripcion, String nivelAlcanzado) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -76,11 +69,11 @@ public class Conocimiento {
         this.descripcion = descripcion;
     }
 
-    public int getNivelAlcanzado() {
+    public String getNivelAlcanzado() {
         return nivelAlcanzado;
     }
 
-    public void setNivelAlcanzado(int nivelAlcanzado) {
+    public void setNivelAlcanzado(String nivelAlcanzado) {
         this.nivelAlcanzado = nivelAlcanzado;
     }
       
