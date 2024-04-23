@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Personas</title>
+
+<link rel="stylesheet" href="estilos_css/estilos_main.css">
+
+</head>
+<body class="estilo_body_01">
+
+	<main class="estilo_main_01">
+	
+		<section class="estilo_section_01">
+		
+			<h2>Sección  de Lista de Personas</h2>
+		
+			<article class="estilo_article_01">
+			
+				<div class="estilo_div_01">
+				
+				<!-- 
+					<ul th:each="persona:${lista_personas}">				
+						<li th:text="${persona.nombre}">Nombre de persona</li>
+						<li th:text="${persona.apellido}">Apellido de persona</li>
+						<li th:text="${persona.ocupacion}">Ocupación de persona</li>
+						<li th:text="${persona.tituloPrincipal}">Título de persona</li>
+						<li th:text="${persona.email}">Email de persona</li>
+						<li th:text="${persona.acercaDe}">AcercaDe de persona</li>						
+						<li th:text="${persona.ciudad}">ciudad de persona</li>
+					</ul>
+					 -->
+					
+				</div>
+		
+				<div class="estilo_div_01">
+				
+					<table border="1" class="estilo_tabla_01">
+					
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido</th>
+								<th>Ocupación</th>
+								<th>Título principal</th>
+								<th>Email</th>
+								<th>AcercaDe</th>
+								<th>Ciudad</th>
+							</tr>
+						</thead>
+						<tbody>
+						 
+							<tr th:each="persona:${lista_personas}">																			
+							
+								<td th:text="${persona.nombre}">Nombre Persona</td>																					
+								<td th:text="${persona.apellido}">Apellido Persona</td>
+								<td th:text="${persona.ocupacion}">Ocupación de Persona</td>															
+								<td th:text="${persona.tituloPrincipal}">Título de Persona</td>															
+								<td th:text="${persona.email}">Email</td>
+								<td th:text="${persona.acercaDe}">AcercaDe</td>
+								<td th:text="${persona.ciudad}">Ciudad</td>													 
+							</tr>																												
+						</tbody>										
+					</table>
+				</div>		
+							
+			</article>	
+			
+		</section>
+	</main>
+
+</body>
+</html>

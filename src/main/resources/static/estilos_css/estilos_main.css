@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.estilo_body_01 {
+	background-color: rgb(200, 210, 230);
+	padding: 1px;
+}
+.estilo_header_01 {
+	background-color: rgb(95, 100, 105);
+	color: rgb(200, 210, 195);
+	padding: 10px;
+}
+.estilo_main_01 {
+	background-color: rgb(200, 190, 170);
+	padding: 10px;
+}
+.estilo_section_01 {
+	background-color: rgb(200, 210, 230);
+	padding: 10px;
+}
+.estilo_article_01 {
+	background-color: rgb(220, 230, 200);
+	padding: 10px;
+}
+.estilo_div_01 {
+	background-color: rgb(245, 240, 250);
+	margin: 10px;	
+	padding: 10px;
+	border: 1px solid green;	
+}
+.estilo_tabla_01 th {
+	padding: 5px;	
+}
+.estilo_tabla_01 td {
+	padding: 5px;
+}
+.estilo_footer_01 {
+	background-color: rgb(90, 100, 110);
+	color: rgb(220, 210, 190);
+	padding: 10px;
+}
